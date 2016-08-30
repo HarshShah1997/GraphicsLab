@@ -7,6 +7,8 @@ typedef struct Point {
     float y;
 } Point;
 
+int n;
+
 void fillBottom(float startx, float starty, float height, float width, int n)
 {
     while (starty - height >= -0.9 + height * n) {
@@ -66,7 +68,6 @@ void display(void)
     float height = 0.22;
     float width = 0.19;
 
-    int n = 4;
 
     for (int i = 0; i < n; i++) {
         start = drawStaircase(start, height, width);
@@ -82,6 +83,7 @@ void init2D(float r, float g, float b)
 
 int main(int argc, char *argv[])
 {
+    n = atoi(argv[1]);
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(500, 500);
