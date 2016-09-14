@@ -75,7 +75,7 @@ void display(void)
     Plane *p2 = new Plane(37, 97);
 
     Leg *l1 = new Leg(40, 100);
-    Leg *l2 = new Leg(170 - 10, 120);
+    Leg *l2 = new Leg(170 - 10 - 4, 120);
     Leg *l3 = new Leg(150 - 10, 170 - 10);
     Leg *l4 = new Leg(20, 150 - 10);
 
