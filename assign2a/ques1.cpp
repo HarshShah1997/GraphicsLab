@@ -31,10 +31,18 @@ void display(void)
             }
         }
     }
+    Matrix* rotate = new Matrix(3, 3);
+    rotate -> elementAt[0][1] = -1;
+    rotate -> elementAt[1][0] = 1;
+
+    Matrix* translate = new Matrix(3, 1);
+    translate -> elementAt[0][0] = 0.5;
+    translate -> elementAt[1][0] = 0.5;
+    
 
     Matrix* transformed[3];
     for (int i = 0; i < 3; i++) {
-        transformed[i] = multiply(scaling, triangle[i]);
+        transformed[i] = add(translate, multiply(rotate, multiply(scaling, triangle[i])));
     }
 
     glBegin(GL_TRIANGLES);
