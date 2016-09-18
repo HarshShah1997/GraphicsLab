@@ -79,9 +79,9 @@ void display(void)
 
     struct timespec tim1, tim2;
     tim1.tv_sec = 0;
-    tim1.tv_nsec = 250000000L; //Half second
+    tim1.tv_nsec = 20000000L; //Half second
 
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 100; i++) {
         float rand1 = 65.0 / 255;
         float rand2 = 105.0 / 255;
         float rand3 = 225.0 / 255;
@@ -90,9 +90,9 @@ void display(void)
         Circle *circle = new Circle(center, 0.3);
         circle -> drawCircle();
         circle -> drawLine(angle);
-        x += 0.1;
-        y -= 0.1;
-        angle -= 0.4;
+        x += 0.01;
+        y -= 0.01;
+        angle -= 0.04;
         
         nanosleep(&tim1, &tim2);
     }
