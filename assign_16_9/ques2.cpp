@@ -73,7 +73,7 @@ void display(void)
 
     struct timespec tim1, tim2;
     tim1.tv_sec = 0;
-    tim1.tv_nsec = 20000000L; //Half second
+    tim1.tv_nsec = 20000000L;
 
     float dir[4][2] = {{0.01, -0.01}, {0.01, 0.01}, {-0.01, 0.01}, {-0.01, -0.01}};
     int j = 0;
@@ -101,8 +101,8 @@ int main(int argc, char *argv[])
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
     glutInitWindowSize(500, 500);
-    glutCreateWindow("Question 1");
-    glClearColor(0.75, 0.75, 0.75, 1);
+    glutCreateWindow("Question 2");
+    glClearColor(0.01, 0.01, 0.01, 1);
     glutDisplayFunc(display);
     glutMainLoop();
     return 0;
