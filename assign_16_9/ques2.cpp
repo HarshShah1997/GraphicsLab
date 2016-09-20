@@ -25,11 +25,14 @@ class Circle {
             radius = r;
         }
 
-        void drawCircle() {
-            glClear(GL_COLOR_BUFFER_BIT);
-            glBegin(GL_LINE_LOOP);
+        void drawCircle(Point* color) {
+            //glClear(GL_COLOR_BUFFER_BIT);
+            glBegin(GL_TRIANGLES);
             for (float angle = 0; angle < 2 * M_PI; angle = angle + 0.01) {
+                glColor3f(color -> x, color -> y, color -> z);
+                glVertex2f(center -> x, center -> y);
                 glVertex2f(radius * cos(angle) + center -> x, radius * sin(angle) + center -> y);
+                glVertex2f(radius * cos(angle + 0.01) + center -> x, radius * sin(angle + 0.01) + center -> y);
             }
             glEnd();
         }
@@ -73,7 +76,7 @@ void display(void)
 
     struct timespec tim1, tim2;
     tim1.tv_sec = 0;
-    tim1.tv_nsec = 20000000L;
+    tim1.tv_nsec = 10000000L;
 
     float dir[4][2] = {{0.01, -0.01}, {0.01, 0.01}, {-0.01, 0.01}, {-0.01, -0.01}};
     int j = 0;
@@ -82,10 +85,13 @@ void display(void)
         float rand2 = (rand() % 255) / 255.0;
         float rand3 = (rand() % 255) / 255.0;
         for (int i = 0; i < 70; i++) {
-            glColor3f(rand1, rand2, rand3);
-            Point *center = new Point(x, y, 0);
-            Circle *circle = new Circle(center, 0.3);
-            circle -> drawCircle();
+            glClear(GL_COLOR_BUFFER_BIT);
+            for (float radius = 0.3; radius >= 0; radius -= 0.005) {
+                Point *center = new Point(x, y, 0);
+                Circle *circle = new Circle(center, radius);
+                circle -> drawCircle(new Point(rand1+(0.3 - radius), rand2, rand3));
+            }
+            glFlush();
             x += dir[j][0];
             y -= dir[j][1];
 
