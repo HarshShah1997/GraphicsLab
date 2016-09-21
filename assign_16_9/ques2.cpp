@@ -89,7 +89,7 @@ void display(void)
             for (float radius = 0.3; radius >= 0; radius -= 0.005) {
                 Point *center = new Point(x, y, 0);
                 Circle *circle = new Circle(center, radius);
-                circle -> drawCircle(new Point(rand1+(0.3 - radius), rand2, rand3));
+                circle -> drawCircle(new Point(rand1+(0.3 - radius), rand2 + (0.3 - radius), rand3 + (0.3 - radius)));
             }
             glFlush();
             x += dir[j][0];
