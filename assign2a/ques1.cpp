@@ -36,7 +36,7 @@ void display(void)
     rotate -> elementAt[1][0] = 1;
 
     Matrix* translate = new Matrix(3, 1);
-    translate -> elementAt[0][0] = 0.5;
+    translate -> elementAt[0][0] = 0;
     translate -> elementAt[1][0] = 0.5;
     
 
