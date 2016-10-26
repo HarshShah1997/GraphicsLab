@@ -44,7 +44,7 @@ void draw(void)
     glBegin(GL_POLYGON);
     glColor3f(0, 0, 1);
 
-    float clipvertices[4][2] = {{-0.3, -0.7}, {-0.3, 0.3}, {0.6, 0.3}, {0.6, -0.7}};
+    float clipvertices[4][2] = {{-0.3, -0.7}, {-0.3, 0.3}, {0.4, 0.3}, {0.4, -0.7}};
 
     vector<vec*> inputList;
 
@@ -54,11 +54,16 @@ void draw(void)
 
     vector<vec*> outputList;
 
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 2; i++) {
         vec* v1 = new vec(clipvertices[i][0], clipvertices[i][1]);
         vec* v2 = new vec(clipvertices[(i+1)%4][0], clipvertices[(i+1)%4][1]);
         vec* edge = sub(v2, v1);
-        vec* S = inputList[inputList.size() - 1];
+        vec* S;
+        if (i == 0) {
+            S = inputList[inputList.size() - 1];
+        } else {
+            S = outputList[outputList.size() - 1];
+        }
         
         cout << ">S " << S -> x << " " << S -> y << endl;
 
